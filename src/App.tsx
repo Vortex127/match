@@ -50,6 +50,22 @@ export function App() {
     }
   }, []);
 
+  // Focus-in reveal for headlines (.blur-in → .is-in the first time they enter view)
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-in');
+            io.unobserve(e.target);
+          }
+        }),
+      { threshold: 0.25 },
+    );
+    document.querySelectorAll('.blur-in').forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   const handleOpenApply = () => {
     setDrawerType('membership');
     setDrawerOpen(true);

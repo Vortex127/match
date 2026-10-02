@@ -12,10 +12,10 @@ export function Footer({ onOpenConsultation }: FooterProps) {
       <div className="max-w-[1800px] w-full mx-auto">
         {/* Massive Brand Wordmark */}
         <div className="border-b border-[#E7E1D7]/15 pb-16 mb-16 overflow-hidden">
-          <h2 className="font-editorial-serif text-6xl sm:text-8xl md:text-9xl lg:text-[13rem] leading-[0.82] tracking-[-0.04em] font-light text-[#F1EDE6] uppercase select-none opacity-90 hover:opacity-100 transition-opacity">
+          <h2 className="font-editorial-serif italic text-6xl sm:text-8xl md:text-9xl lg:text-[11rem] leading-[1.05] tracking-[-0.02em] font-light text-[#F1EDE6] select-none opacity-90 hover:opacity-100 transition-opacity">
             {footer.wordmark}
           </h2>
-          <div className="flex justify-between items-center text-[10px] md:text-xs tracking-[0.3em] font-mono text-[#8E8B85] uppercase mt-4">
+          <div className="flex justify-between items-center text-[10px] md:text-xs tracking-[0.3em] font-sans text-[#8E8B85] uppercase mt-4">
             <span>{footer.descriptor}</span>
             <span>PARIS · LONDON · NEW YORK · ZURICH</span>
           </div>
@@ -26,7 +26,7 @@ export function Footer({ onOpenConsultation }: FooterProps) {
           
           {/* Column 1: Explore */}
           <div className="space-y-4">
-            <span className="text-[10px] font-mono tracking-[0.25em] text-[#8E8B85] uppercase block">
+            <span className="text-[10px] font-sans tracking-[0.25em] text-[#8E8B85] uppercase block">
               Explore
             </span>
             <ul className="space-y-3 font-light text-[#E7E1D7]/75">
@@ -45,7 +45,7 @@ export function Footer({ onOpenConsultation }: FooterProps) {
 
           {/* Column 2: Inquiries & Contact */}
           <div className="space-y-4">
-            <span className="text-[10px] font-mono tracking-[0.25em] text-[#8E8B85] uppercase block">
+            <span className="text-[10px] font-sans tracking-[0.25em] text-[#8E8B85] uppercase block">
               Inquiries
             </span>
             <ul className="space-y-3 font-light text-[#E7E1D7]/75">
@@ -78,7 +78,7 @@ export function Footer({ onOpenConsultation }: FooterProps) {
 
           {/* Column 3: Social / Journals */}
           <div className="space-y-4">
-            <span className="text-[10px] font-mono tracking-[0.25em] text-[#8E8B85] uppercase block">
+            <span className="text-[10px] font-sans tracking-[0.25em] text-[#8E8B85] uppercase block">
               Dispatch
             </span>
             <ul className="space-y-3 font-light text-[#E7E1D7]/75">
@@ -97,7 +97,7 @@ export function Footer({ onOpenConsultation }: FooterProps) {
 
           {/* Column 4: Discretion & Legal */}
           <div className="space-y-4">
-            <span className="text-[10px] font-mono tracking-[0.25em] text-[#8E8B85] uppercase block">
+            <span className="text-[10px] font-sans tracking-[0.25em] text-[#8E8B85] uppercase block">
               Protocol
             </span>
             <ul className="space-y-3 font-light text-[#E7E1D7]/75">
@@ -116,13 +116,13 @@ export function Footer({ onOpenConsultation }: FooterProps) {
 
           {/* Column 5: Editorial Statement */}
           <div className="col-span-2 sm:col-span-2 lg:col-span-1 space-y-4">
-            <span className="text-[10px] font-mono tracking-[0.25em] text-[#C5A880] uppercase block">
+            <span className="text-[10px] font-sans tracking-[0.25em] text-[#C5A880] uppercase block">
               The Standard
             </span>
             <p className="font-editorial-serif italic text-lg text-[#E7E1D7]/85 font-light leading-snug">
               “{footer.closing}”
             </p>
-            <p className="text-[10px] font-mono text-[#8E8B85] tracking-widest uppercase">
+            <p className="text-[10px] font-sans text-[#8E8B85] tracking-widest uppercase">
               By appointment only.
             </p>
           </div>
@@ -130,7 +130,7 @@ export function Footer({ onOpenConsultation }: FooterProps) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] font-mono tracking-[0.25em] text-[#8E8B85]/60 uppercase space-y-4 sm:space-y-0">
+        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] font-sans tracking-[0.25em] text-[#8E8B85]/60 uppercase space-y-4 sm:space-y-0">
           <div>
             © {new Date().getFullYear()} ÉLAN MATCH LIMITED. ALL RIGHTS RESERVED.
           </div>

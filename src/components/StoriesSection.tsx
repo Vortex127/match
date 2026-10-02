@@ -24,15 +24,15 @@ export function StoriesSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-[#E7E1D7]/15 mb-16">
           <div className="space-y-4">
-            <span className="text-[10px] md:text-xs tracking-[0.3em] font-mono text-[#8E8B85] uppercase">
+            <span className="text-[10px] md:text-xs tracking-[0.3em] font-sans text-[#8E8B85] uppercase">
               Section 07 · Archival Introductions
             </span>
-            <h2 className="font-editorial-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight font-light uppercase text-[#F1EDE6]">
-              SELECTED STORIES
+            <h2 className="blur-in font-editorial-serif italic text-4xl sm:text-5xl md:text-6xl tracking-[-0.01em] font-light text-[#F1EDE6]">
+              Selected Stories
             </h2>
           </div>
           <div className="mt-6 md:mt-0 flex items-center space-x-6">
-            <span className="text-xs font-mono text-[#8E8B85] tracking-widest uppercase">
+            <span className="text-xs font-sans text-[#8E8B85] tracking-widest uppercase">
               0{selectedIdx + 1} / 0{stories.length}
             </span>
             <div className="flex space-x-2">
@@ -60,7 +60,7 @@ export function StoriesSection() {
             <button
               key={story.id}
               onClick={() => setSelectedIdx(idx)}
-              className={`text-left whitespace-nowrap text-xs font-mono tracking-[0.2em] uppercase transition-all duration-300 pb-2 relative ${
+              className={`text-left whitespace-nowrap text-xs font-sans tracking-[0.2em] uppercase transition-all duration-300 pb-2 relative ${
                 selectedIdx === idx
                   ? 'text-[#F1EDE6] font-medium'
                   : 'text-[#8E8B85] hover:text-[#F1EDE6]/70'
@@ -90,10 +90,10 @@ export function StoriesSection() {
 
               {/* Film Still Editorial Label */}
               <div className="absolute bottom-6 left-6 text-left">
-                <span className="text-[10px] font-mono tracking-[0.25em] text-[#C5A880] uppercase block">
+                <span className="text-[10px] font-sans tracking-[0.25em] text-[#C5A880] uppercase block">
                   {current.year}
                 </span>
-                <span className="text-xs font-mono tracking-[0.2em] text-[#F1EDE6] uppercase">
+                <span className="text-xs font-sans tracking-[0.2em] text-[#F1EDE6] uppercase">
                   {current.location}
                 </span>
               </div>
@@ -103,7 +103,7 @@ export function StoriesSection() {
           {/* Editorial Content Column */}
           <div className="lg:col-span-6 space-y-10 lg:pl-6">
             <div className="space-y-4">
-              <div className="flex items-center space-x-3 text-[10px] font-mono tracking-[0.3em] uppercase text-[#8E8B85]">
+              <div className="flex items-center space-x-3 text-[10px] font-sans tracking-[0.3em] uppercase text-[#8E8B85]">
                 <span>ARCHIVAL DOSSIER</span>
                 <span>•</span>
                 <span>{current.location}</span>
@@ -127,7 +127,7 @@ export function StoriesSection() {
             </p>
 
             {/* Archival Footnote */}
-            <div className="pt-6 border-t border-[#E7E1D7]/10 flex flex-wrap justify-between items-center gap-4 text-[10px] font-mono tracking-[0.25em] text-[#8E8B85] uppercase">
+            <div className="pt-6 border-t border-[#E7E1D7]/10 flex flex-wrap justify-between items-center gap-4 text-[10px] font-sans tracking-[0.25em] text-[#8E8B85] uppercase">
               <span>DISCRETION CHARTER VERIFIED</span>
               <span className="text-[#C5A880]">MATCHED BY ÉLAN PRINCIPALS</span>
             </div>

@@ -1,174 +1,234 @@
-import { useState, useRef, useEffect, type MouseEvent as ReactMouseEvent } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 interface HeroWanderlustProps {
   onOpenApply: () => void;
 }
 
+const BG = 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=2800&q=85';
+
+const unsplash = (id: string) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1600&q=80`;
+const SLIDES = [
+  { src: unsplash('1516589178581-6cd7833ae3b2'), alt: 'Two pairs of hands forming a heart against the sunset' },
+  { src: unsplash('1414235077428-338989a2e8c0'), alt: 'A candlelit dinner table set for two' },
+  { src: unsplash('1543007630-9710e4a00a20'), alt: 'A warmly lit bar with hanging bulbs' },
+  { src: unsplash('1470337458703-46ad1756a187'), alt: 'Cocktails being poured at a quiet bar' },
+  { src: unsplash('1474552226712-ac0f0961a954'), alt: 'Two silhouettes sharing a quiet moment at dusk' },
+];
+
+const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const wrap = (i: number) => (i + SLIDES.length) % SLIDES.length;
+
+// Every slide stays mounted and cross-fades, so swapping never flashes.
+function SlideStack({ active, className = '', objectPosition }: { active: number; className?: string; objectPosition?: string }) {
+  return (
+    <div className={`absolute inset-0 ${className}`}>
+      {SLIDES.map((s, i) => (
+        <img
+          key={s.src}
+          src={s.src}
+          alt={i === active ? s.alt : ''}
+          draggable={false}
+          className="absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+          style={{ opacity: i === active ? 1 : 0, transform: i === active ? 'scale(1)' : 'scale(1.12)', objectPosition }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function HeroWanderlust({ onOpenApply }: HeroWanderlustProps) {
-  // Interactive floating card in the center (matches Wanderlust 00:01-00:02)
-  const [cardOffset, setCardOffset] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const dragStartRef = useRef({ x: 0, y: 0, initialX: 0, initialY: 0 });
-  const containerRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const scrolledRef = useRef(false);
+  const [active, setActive] = useState(0);
 
-  // Parallax on mouse move
-  const handleMouseMove = (e: ReactMouseEvent) => {
-    if (isDragging) return;
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    const normX = (clientX / innerWidth - 0.5) * 20;
-    const normY = (clientY / innerHeight - 0.5) * 15;
-    setCardOffset({ x: normX, y: normY });
-  };
-
-  const handleMouseDown = (e: ReactMouseEvent) => {
-    setIsDragging(true);
-    dragStartRef.current = {
-      x: e.clientX,
-      y: e.clientY,
-      initialX: cardOffset.x,
-      initialY: cardOffset.y,
-    };
-  };
-
+  // Scroll-driven expansion of the centre window + pointer parallax on the backdrop.
+  // Writes CSS variables directly so scrolling never triggers React re-renders.
   useEffect(() => {
-    const handleGlobalMouseMove = (e: MouseEvent) => {
-      if (!isDragging) return;
-      const dx = e.clientX - dragStartRef.current.x;
-      const dy = e.clientY - dragStartRef.current.y;
-      setCardOffset({
-        x: dragStartRef.current.initialX + dx,
-        y: dragStartRef.current.initialY + dy,
-      });
+    const section = sectionRef.current;
+    const stage = stageRef.current;
+    if (!section || !stage) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let raf = 0;
+
+    const update = () => {
+      raf = 0;
+      const rect = section.getBoundingClientRect();
+      // The last viewport of pinned scroll is the curtain: the next section slides up over the open photo.
+      const total = section.offsetHeight - window.innerHeight * 2;
+      const p = reduced ? 0 : clamp(-rect.top / total);
+      const c = clamp((-rect.top - total) / window.innerHeight);
+      scrolledRef.current = p > 0.02;
+      stage.style.setProperty('--p', p.toFixed(4));
+      stage.style.setProperty('--e', p.toFixed(4));
+      stage.style.setProperty('--c', c.toFixed(4));
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    const onMove = (e: MouseEvent) => {
+      if (reduced) return;
+      stage.style.setProperty('--mx', ((e.clientX / window.innerWidth - 0.5) * -14).toFixed(2) + 'px');
+      stage.style.setProperty('--my', ((e.clientY / window.innerHeight - 0.5) * -10).toFixed(2) + 'px');
     };
 
-    const handleGlobalMouseUp = () => {
-      if (isDragging) setIsDragging(false);
-    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('mousemove', onMove, { passive: true });
 
-    window.addEventListener('mousemove', handleGlobalMouseMove);
-    window.addEventListener('mouseup', handleGlobalMouseUp);
+    // Slider autoplay — holds still once the window starts opening up.
+    const timer = reduced
+      ? 0
+      : window.setInterval(() => {
+          if (!scrolledRef.current) setActive((a) => wrap(a + 1));
+        }, 3600);
 
     return () => {
-      window.removeEventListener('mousemove', handleGlobalMouseMove);
-      window.removeEventListener('mouseup', handleGlobalMouseUp);
+      cancelAnimationFrame(raf);
+      clearInterval(timer);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      window.removeEventListener('mousemove', onMove);
     };
-  }, [isDragging]);
+  }, []);
+
+  // Window footprint at rest (vw/vh) — the flanking statements hug its edges.
+  const W = 'var(--ww)';
+  const H = 'var(--wh)';
 
   return (
-    <section
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      className="relative min-h-screen w-full bg-[#101110] text-[#F1EDE6] overflow-hidden flex flex-col justify-between pt-24 pb-8 px-6 md:px-12 select-none"
-    >
-      {/* Cinematic Full-Bleed Background Image (Mist, River & Silhouette) */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=85"
-          alt="Contemplative landscape with atmospheric dusk mist"
-          className="w-full h-full object-cover object-center filter grayscale-[30%] contrast-[1.08] brightness-[0.45] scale-105 transition-transform duration-1000 ease-out"
-        />
-        {/* Silhouette overlay from left/bottom */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#101110]/95 via-transparent to-[#101110]/90" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#101110] via-transparent to-[#101110]/80" />
-        <div className="absolute inset-0 film-grain opacity-35 pointer-events-none" />
-      </div>
-
-      {/* Top Editorial Sub-bar */}
-      <div className="relative z-10 max-w-[1800px] w-full mx-auto flex justify-between items-center text-[10px] md:text-xs tracking-[0.3em] font-mono text-[#8E8B85] uppercase border-b border-[#E7E1D7]/15 pb-4">
-        <div className="flex items-center space-x-3">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]" />
-          <span>PRIVATE MATCHMAKING</span>
-        </div>
-        <div className="hidden sm:block">
-          <span>CURATED INTENTIONS</span>
-        </div>
-        <div className="flex space-x-6">
-          <span>PARIS · NEW YORK · LONDON</span>
-          <span>EST. 2026</span>
-        </div>
-      </div>
-
-      {/* Main Split-Screen Typography & Floating Interactive Centerpiece */}
-      <div className="relative z-10 max-w-[1800px] w-full mx-auto flex-1 flex items-center justify-between py-12">
-        
-        {/* Left Headline: "Beyond Profiles" */}
-        <div className="flex-1 text-left z-10">
-          <h1 className="font-editorial-serif text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[9.5rem] leading-[0.88] tracking-[-0.03em] font-light uppercase text-[#F1EDE6]">
-            Beyond
-            <span className="block italic text-[#E7E1D7] font-normal">Profiles</span>
-          </h1>
-          <p className="mt-6 text-xs md:text-sm font-mono tracking-[0.25em] text-[#8E8B85] uppercase max-w-xs">
-            01 / Curated by human intuition, not predictive algorithms.
-          </p>
-        </div>
-
-        {/* Center: Interactive Draggable Polaroid / Film Window (Exact Wanderlust Recreation) */}
+    <section ref={sectionRef} className="relative w-full bg-[#101110] text-[#F1EDE6] h-[340vh]">
+      <div
+        ref={stageRef}
+        className="sticky top-0 h-screen w-full overflow-hidden [--ww:58vw] [--wh:30vh] lg:[--ww:35vw] lg:[--wh:31vh]"
+        style={{ ['--p' as string]: 0, ['--e' as string]: 0, ['--c' as string]: 0, ['--mx' as string]: '0px', ['--my' as string]: '0px' }}
+      >
+        {/* Full-bleed moody backdrop — a lone figure facing the valley, pushed to the left */}
         <div
-          className="relative z-20 mx-4 cursor-grab active:cursor-grabbing hidden lg:block"
+          className="absolute inset-[-3%] will-change-transform"
           style={{
-            transform: `translate3d(${cardOffset.x}px, ${cardOffset.y}px, 0)`,
-            transition: isDragging ? 'none' : 'transform 0.3s cubic-bezier(0.22, 1, 0.36, 1)',
+            transform: 'translate3d(var(--mx), var(--my), 0) scale(calc(1.04 - var(--e) * 0.04))',
+            transition: 'transform 0.6s cubic-bezier(0.22,1,0.36,1)',
           }}
-          onMouseDown={handleMouseDown}
         >
-          <div className="w-72 xl:w-84 bg-[#1C1D1B] p-3 border border-[#E7E1D7]/30 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)] backdrop-blur-md group">
-            {/* Inner Photo Window */}
-            <div className="relative aspect-[16/11] overflow-hidden bg-black">
-              <img
-                src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=85"
-                alt="Two people sitting together in unguarded conversation"
-                className="w-full h-full object-cover filter contrast-[1.05] brightness-95 group-hover:scale-105 transition-transform duration-700 pointer-events-none"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-40" />
-              <div className="absolute top-2 left-2 text-[8px] font-mono tracking-widest text-[#E7E1D7] bg-black/60 px-1.5 py-0.5 uppercase">
-                REAL MOMENTS
-              </div>
-            </div>
+          <img
+            src={BG}
+            alt="Friends looking out over the hills at sunset"
+            className="h-full w-full object-cover grayscale-[60%] contrast-[1.1] brightness-[0.42] lg:[transform:translateX(-19%)_scale(1.4)]"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#101110]/60 via-transparent to-[#101110]/75" />
+        <div className="absolute inset-0 film-grain opacity-40 pointer-events-none" />
 
-            {/* Polaroid Bottom Notes */}
-            <div className="mt-3 flex justify-between items-center text-[9px] font-mono tracking-[0.2em] uppercase text-[#8E8B85]">
-              <span>UNGUARDED CONNECTION</span>
-              <span className="text-[#C5A880]">DRAG TO EXPLORE</span>
-            </div>
+        {/* Neighbouring slides peeking above and below the window */}
+        <div
+          aria-hidden
+          className="absolute left-1/2 top-0 hidden lg:block h-[13vh] w-[16vw] min-w-[110px] -translate-x-1/2 overflow-hidden"
+          style={{ opacity: 'calc(1 - var(--e) * 5)' }}
+        >
+          <SlideStack active={wrap(active - 1)} objectPosition="50% 100%" className="brightness-[0.8]" />
+        </div>
+        <div
+          aria-hidden
+          className="absolute bottom-0 left-1/2 hidden lg:block h-[13vh] w-[16vw] min-w-[110px] -translate-x-1/2 overflow-hidden"
+          style={{ opacity: 'calc(1 - var(--e) * 5)' }}
+        >
+          <SlideStack active={wrap(active + 1)} objectPosition="50% 0%" className="brightness-[0.8]" />
+        </div>
+
+        {/* Centre window that opens to full-bleed on scroll */}
+        <div
+          className="absolute left-1/2 top-1/2"
+          style={{
+            width: `calc(${W} + (100vw - ${W}) * var(--e))`,
+            height: `calc(${H} + (100vh - ${H}) * var(--e))`,
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          <div
+            className="absolute inset-x-0 -top-7 flex justify-between text-[10px] tracking-[0.1em] uppercase text-[#F1EDE6]"
+            style={{ opacity: 'calc(1 - var(--e) * 4)' }}
+          >
+            <span>Private stories</span>
+            <span>Journal</span>
+          </div>
+
+          <div className="absolute inset-0 overflow-hidden">
+            <SlideStack active={active} className="contrast-[1.05] brightness-[0.9] saturate-[0.85]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/15" />
+            <span
+              className="absolute left-3 top-3 h-1.5 w-1.5 rounded-full bg-[#ff2d55]"
+              style={{ opacity: 'calc(1 - var(--e) * 4)' }}
+            />
+          </div>
+
+          <div
+            className="absolute inset-x-0 -bottom-7 grid grid-cols-3 text-[10px] tracking-[0.1em] uppercase text-[#F1EDE6]"
+            style={{ opacity: 'calc(1 - var(--e) * 4)' }}
+          >
+            <span>{String(active + 1).padStart(2, '0')}.</span>
+            <span className="text-center whitespace-nowrap">Real introductions</span>
+            <span className="text-right">42.</span>
           </div>
         </div>
 
-        {/* Right Headline: "Into Moments" */}
-        <div className="flex-1 text-right z-10">
-          <h1 className="font-editorial-serif text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[9.5rem] leading-[0.88] tracking-[-0.03em] font-light uppercase text-[#F1EDE6]">
-            Into
-            <span className="block italic text-[#E7E1D7] font-normal">Moments</span>
-          </h1>
-          <div className="mt-6 flex justify-end">
-            <button
-              onClick={onOpenApply}
-              className="inline-flex items-center space-x-2 text-xs font-mono tracking-[0.25em] uppercase text-[#F1EDE6] pb-1 border-b border-[#E7E1D7] hover:text-[#C5A880] hover:border-[#C5A880] transition-colors group"
-            >
-              <span>Apply for Membership</span>
-              <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
-          </div>
+        {/* Curtain: the pinned photo recedes as the next section covers it */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[#101110] pointer-events-none"
+          style={{ opacity: 'calc(var(--c) * 0.7)' }}
+        />
+
+        {/* Left & right statements — hug the window on desktop, bracket it on mobile */}
+        <h1 className="sr-only">Beyond Profiles. Into Connection.</h1>
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-[13vh] text-center font-editorial-serif italic text-[clamp(2.2rem,9vw,3.4rem)] leading-[0.95] text-[#F6E9C8] lg:inset-x-auto lg:top-1/2 lg:text-right lg:text-[clamp(2.4rem,5vw,6rem)] lg:[right:calc(50%+var(--ww)/2+1.6vw)] lg:[transform:translate3d(calc(var(--e)*-14vw),-50%,0)]"
+          style={{ opacity: 'calc(1 - var(--e) * 2.2)' }}
+        >
+          Beyond<br className="hidden lg:block" /> Profiles
+        </div>
+        <div
+          aria-hidden
+          className="absolute inset-x-0 bottom-[13vh] text-center font-editorial-serif italic text-[clamp(2.2rem,9vw,3.4rem)] leading-[0.95] text-[#F6E9C8] lg:inset-x-auto lg:bottom-auto lg:top-1/2 lg:text-left lg:text-[clamp(2.4rem,5vw,6rem)] lg:[left:calc(50%+var(--ww)/2+1.6vw)] lg:[transform:translate3d(calc(var(--e)*14vw),-50%,0)]"
+          style={{ opacity: 'calc(1 - var(--e) * 2.2)' }}
+        >
+          Into<br className="hidden lg:block" /> Connection
         </div>
 
-      </div>
+        {/* Index of cities — bottom, aligned under the nav column as in the reference */}
+        <ul
+          className="absolute left-[66vw] bottom-[6vh] hidden lg:block text-[11px] leading-[1.6] tracking-[0.1em] uppercase text-[#F1EDE6]/45"
+          style={{ opacity: 'calc(1 - var(--e) * 4)' }}
+        >
+          <li className="text-[#F1EDE6]">• All introductions</li>
+          <li>London</li>
+          <li>New York</li>
+          <li>Copenhagen</li>
+          <li>Lisbon</li>
+        </ul>
 
-      {/* Bottom Editorial Meta Bar (Matches 00:01-00:02) */}
-      <div className="relative z-10 max-w-[1800px] w-full mx-auto pt-6 border-t border-[#E7E1D7]/15 flex flex-wrap justify-between items-end text-[10px] md:text-xs font-mono tracking-[0.25em] text-[#8E8B85] uppercase">
-        <div>
-          <span>GLOBAL / 2026</span>
+        {/* Edge metadata */}
+        <div
+          className="absolute left-6 md:left-12 bottom-8 text-[10px] tracking-[0.28em] uppercase text-[#E7E1D7]/70"
+          style={{ opacity: 'calc(1 - var(--e) * 3)' }}
+        >
+          Private matchmaking
+          <span className="block mt-1 text-[#E7E1D7]/45">Est. 2026</span>
         </div>
-        <div className="flex items-center space-x-2 text-[#E7E1D7]">
-          <span>SCROLL FOR INTRODUCTIONS</span>
-          <span className="animate-bounce">↓</span>
-        </div>
-        <div>
+        <div
+          className="absolute right-6 md:right-12 bottom-8 text-right"
+          style={{ opacity: 'calc(1 - var(--e) * 3)' }}
+        >
           <button
             onClick={onOpenApply}
-            className="hover:text-[#F1EDE6] transition-colors"
+            className="group inline-flex items-center gap-2 border-b border-[#E7E1D7]/50 pb-1 text-[10px] tracking-[0.28em] uppercase text-[#F1EDE6] transition-colors hover:border-[#F1EDE6]"
           >
-            ALL INTRODUCTIONS ↗
+            Apply for membership
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
           </button>
         </div>
       </div>

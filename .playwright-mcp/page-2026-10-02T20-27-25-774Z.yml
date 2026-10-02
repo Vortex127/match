@@ -1,0 +1,350 @@
+- generic [ref=f2e3]:
+  - generic:
+    - generic:
+      - generic: Private Matchmaking
+      - generic:
+        - heading "ÉLAN MATCH" [level=1]
+      - generic: New York · Paris · London
+  - banner:
+    - generic:
+      - link "ÉlanMatch" [ref=f2e4] [cursor=pointer]:
+        - /url: "#"
+      - generic [ref=f2e5]:
+        - navigation "Primary" [ref=f2e6]:
+          - link "Curation" [ref=f2e7] [cursor=pointer]:
+            - /url: "#curation"
+          - link "Method" [ref=f2e8] [cursor=pointer]:
+            - /url: "#method"
+          - link "Stories" [ref=f2e9] [cursor=pointer]:
+            - /url: "#stories"
+          - link "Discretion" [ref=f2e10] [cursor=pointer]:
+            - /url: "#discretion"
+          - link "Membership" [ref=f2e11] [cursor=pointer]:
+            - /url: "#membership"
+        - generic [ref=f2e12]:
+          - button "Apply for membership" [ref=f2e13]
+          - button "Play ambient soundscape" [ref=f2e17]: Sound off
+  - main [ref=f2e22]:
+    - generic [ref=f2e24]:
+      - img "Quiet river valley under heavy cloud" [ref=f2e26]
+      - generic [ref=f2e28]:
+        - img "Two silhouettes sharing a quiet moment at dusk" [ref=f2e29]
+        - generic [ref=f2e31]:
+          - generic [ref=f2e32]: Real moments
+          - generic [ref=f2e33]: "01"
+      - heading "Beyond Profiles. Into Connection." [level=1] [ref=f2e34]
+      - generic [aria-hidden] [ref=f2e35]: Beyond Profiles
+      - generic [aria-hidden] [ref=f2e36]: Into Connection
+      - generic [ref=f2e37]:
+        - generic [ref=f2e38]: "01."
+        - generic [ref=f2e39]: Real introductions
+        - generic [ref=f2e40]: "42."
+      - list [ref=f2e41]:
+        - listitem [ref=f2e42]: • All introductions
+        - listitem [ref=f2e43]: London
+        - listitem [ref=f2e44]: New York
+        - listitem [ref=f2e45]: Copenhagen
+        - listitem [ref=f2e46]: Lisbon
+      - generic [ref=f2e47]:
+        - text: Private matchmaking
+        - generic [ref=f2e48]: Est. 2026
+      - button "Apply for membership" [ref=f2e50]
+    - generic [ref=f2e54]:
+      - generic:
+        - heading "Connections Worth Discovering" [level=2]: ConnectionsWorth Discovering
+      - figure [ref=f2e55] [cursor=pointer]:
+        - generic [ref=f2e57]:
+          - img "Copenhagen" [ref=f2e59]
+          - generic [ref=f2e60]: Copenhagen
+      - figure [ref=f2e61] [cursor=pointer]:
+        - generic [ref=f2e63]:
+          - img "Tribeca" [ref=f2e65]
+          - generic [ref=f2e66]: Tribeca
+      - figure [ref=f2e67] [cursor=pointer]:
+        - generic [ref=f2e69]:
+          - img "Kyoto" [ref=f2e71]
+          - generic [ref=f2e72]: Kyoto
+      - figure [ref=f2e73] [cursor=pointer]:
+        - generic [ref=f2e75]:
+          - img "Lisbon" [ref=f2e77]
+          - generic [ref=f2e78]: Lisbon
+      - figure [ref=f2e79] [cursor=pointer]:
+        - generic [ref=f2e81]:
+          - img "Milan" [ref=f2e83]
+          - generic [ref=f2e84]: Milan
+      - figure [ref=f2e85] [cursor=pointer]:
+        - generic [ref=f2e87]:
+          - img "Stockholm" [ref=f2e89]
+          - generic [ref=f2e90]: Stockholm
+      - figure [ref=f2e91] [cursor=pointer]:
+        - generic [ref=f2e93]:
+          - img "Edinburgh" [ref=f2e95]
+          - generic [ref=f2e96]: Edinburgh
+      - figure [ref=f2e97] [cursor=pointer]:
+        - generic [ref=f2e99]:
+          - img "Amsterdam" [ref=f2e101]
+          - generic [ref=f2e102]: Amsterdam
+      - figure [ref=f2e103] [cursor=pointer]:
+        - generic [ref=f2e105]:
+          - img "Oslo" [ref=f2e107]
+          - generic [ref=f2e108]: Oslo
+      - figure [ref=f2e109] [cursor=pointer]:
+        - generic [ref=f2e111]:
+          - img "Bergen" [ref=f2e113]
+          - generic [ref=f2e114]: Bergen
+      - figure [ref=f2e115] [cursor=pointer]:
+        - generic [ref=f2e117]:
+          - img "Zurich" [ref=f2e119]
+          - generic [ref=f2e120]: Zurich
+      - figure [ref=f2e121] [cursor=pointer]:
+        - generic [ref=f2e123]:
+          - img "Geneva" [ref=f2e125]
+          - generic [ref=f2e126]: Geneva
+      - figure [ref=f2e127] [cursor=pointer]:
+        - generic [ref=f2e129]:
+          - img "Vienna" [ref=f2e131]
+          - generic [ref=f2e132]: Vienna
+      - figure [ref=f2e133] [cursor=pointer]:
+        - generic [ref=f2e135]:
+          - img "Porto" [ref=f2e137]
+          - generic [ref=f2e138]: Porto
+      - list [ref=f2e139]:
+        - listitem [ref=f2e140]:
+          - button "01. Copenhagen" [ref=f2e141]
+        - listitem [ref=f2e142]:
+          - button "02. Tribeca" [ref=f2e143]
+        - listitem [ref=f2e144]:
+          - button "03. Kyoto" [ref=f2e145]
+        - listitem [ref=f2e146]:
+          - button "04. Lisbon" [ref=f2e147]
+        - listitem [ref=f2e148]:
+          - button "05. Milan" [ref=f2e149]
+        - listitem [ref=f2e150]:
+          - button "06. Stockholm" [ref=f2e151]
+        - listitem [ref=f2e152]:
+          - button "07. Edinburgh" [ref=f2e153]
+      - list [ref=f2e154]:
+        - listitem [ref=f2e155]:
+          - button "Amsterdam 08." [ref=f2e156]
+        - listitem [ref=f2e157]:
+          - button "Oslo 09." [ref=f2e158]
+        - listitem [ref=f2e159]:
+          - button "Bergen 10." [ref=f2e160]
+        - listitem [ref=f2e161]:
+          - button "Zurich 11." [ref=f2e162]
+        - listitem [ref=f2e163]:
+          - button "Geneva 12." [ref=f2e164]
+        - listitem [ref=f2e165]:
+          - button "Vienna 13." [ref=f2e166]
+        - listitem [ref=f2e167]:
+          - button "Porto 14." [ref=f2e168]
+    - generic [ref=f2e170]:
+      - img "Green valley and river under low cloud" [ref=f2e172]
+      - heading "Meet Someone Who Stays With You" [level=2] [ref=f2e174]: Meet SomeoneWho Stays With You
+      - paragraph [ref=f2e175]: We introduce for the conversations you’ll still be having years later.
+      - paragraph [ref=f2e176]: The quiet evenings. The unscripted laughter. Introductions that never feel like work.
+      - generic [ref=f2e178]:
+        - img "Two people sharing a quiet moment at dusk" [ref=f2e181]
+        - paragraph [ref=f2e182]: The ones that stay
+    - generic [ref=f2e184]:
+      - generic [ref=f2e185]:
+        - generic [ref=f2e186]:
+          - generic [ref=f2e187]: Section 04 · Methodology
+          - heading "How We Match" [level=2] [ref=f2e188]
+        - paragraph [ref=f2e189]: “Four intentional steps toward an unhurried, meaningful connection.”
+      - generic [ref=f2e190]:
+        - generic [ref=f2e191] [cursor=pointer]:
+          - img "Private Consultation" [ref=f2e193]
+          - generic [ref=f2e195]:
+            - generic [ref=f2e196]: "01"
+            - generic [ref=f2e197]: THE FOUNDATION
+          - generic [ref=f2e198]:
+            - heading "Private Consultation" [level=3] [ref=f2e199]
+            - generic [ref=f2e200]:
+              - paragraph [ref=f2e201]: We begin with an in-depth conversation. Values, temperament, ambition, emotional architecture, and the life you actually want to build.
+              - button "Inquire regarding this phase" [ref=f2e203]
+        - generic [ref=f2e208] [cursor=pointer]:
+          - img "Discreet Scouting" [ref=f2e210]
+          - generic [ref=f2e212]:
+            - generic [ref=f2e213]: "02"
+            - generic [ref=f2e214]: BEYOND DATABASES
+          - generic [ref=f2e215]:
+            - heading "Discreet Scouting" [level=3] [ref=f2e216]
+            - generic:
+              - paragraph [ref=f2e217]: Our private network and research team look beyond standard circles. Direct outreach and confidential scouting across creative and executive spheres.
+              - button "Inquire regarding this phase" [ref=f2e219]
+        - generic [ref=f2e224] [cursor=pointer]:
+          - img "Bilateral Curation" [ref=f2e226]
+          - generic [ref=f2e228]:
+            - generic [ref=f2e229]: "03"
+            - generic [ref=f2e230]: INDIVIDUAL CHEMISTRY
+          - generic [ref=f2e231]:
+            - heading "Bilateral Curation" [level=3] [ref=f2e232]
+            - generic:
+              - paragraph [ref=f2e233]: Every introduction is considered individually. Chemistry matters. So does timing, communication cadence, and true life compatibility.
+              - button "Inquire regarding this phase" [ref=f2e235]
+        - generic [ref=f2e240] [cursor=pointer]:
+          - img "Thoughtful Introduction" [ref=f2e242]
+          - generic [ref=f2e244]:
+            - generic [ref=f2e245]: "04"
+            - generic [ref=f2e246]: ONE AT A TIME
+          - generic [ref=f2e247]:
+            - heading "Thoughtful Introduction" [level=3] [ref=f2e248]
+            - generic:
+              - paragraph [ref=f2e249]: No endless swipe queue. A single thoughtful meeting curated at an intimate, quiet venue with ongoing concierge follow-up.
+              - button "Inquire regarding this phase" [ref=f2e251]
+      - generic [ref=f2e256]:
+        - generic [ref=f2e257]: Curated In-House Protocol
+        - generic [ref=f2e258]: Zero Algorithmic Matching
+    - generic [ref=f2e260]:
+      - generic [ref=f2e261]:
+        - generic [ref=f2e262]:
+          - text: Section 07 · Archival Introductions
+          - heading "Selected Stories" [level=2] [ref=f2e263]
+        - generic [ref=f2e264]:
+          - generic [ref=f2e265]: 01 / 04
+          - generic [ref=f2e266]:
+            - button "Previous story" [ref=f2e267]
+            - button "Next story" [ref=f2e270]
+      - generic [ref=f2e273]:
+        - button "Maya & Daniel" [ref=f2e274]
+        - button "Amelia & Marcus" [ref=f2e276]
+        - button "Isabel & Theo" [ref=f2e277]
+        - button "Julian & Elena" [ref=f2e278]
+      - generic [ref=f2e279]:
+        - generic [ref=f2e281]:
+          - img "Maya & Daniel" [ref=f2e282]
+          - generic [ref=f2e284]:
+            - generic [ref=f2e285]: Introduced 2025
+            - text: London → Copenhagen
+        - generic [ref=f2e286]:
+          - generic [ref=f2e287]:
+            - generic [ref=f2e288]:
+              - generic [ref=f2e289]: ARCHIVAL DOSSIER
+              - generic [ref=f2e290]: •
+              - generic [ref=f2e291]: London → Copenhagen
+            - heading "Maya & Daniel" [level=3] [ref=f2e292]
+          - blockquote [ref=f2e294]: “Neither of us expected the first introduction to feel this natural.”
+          - paragraph [ref=f2e295]: Maya, a design director in Bloomsbury, and Daniel, an architectural conservationist based in Copenhagen, were introduced after our matchmakers identified a shared aesthetic restraint and mutual desire to build an unhurried life together.
+          - generic [ref=f2e296]:
+            - generic [ref=f2e297]: DISCRETION CHARTER VERIFIED
+            - generic [ref=f2e298]: MATCHED BY ÉLAN PRINCIPALS
+    - generic [ref=f2e300]:
+      - generic [ref=f2e301]:
+        - generic [ref=f2e302]: "08"
+        - generic [ref=f2e303]: /
+        - generic [ref=f2e304]: CONFIDENTIALITY & ETHICS
+      - generic [ref=f2e305]:
+        - generic [ref=f2e306]:
+          - heading "Personal by design." [level=2] [ref=f2e307]
+          - heading "Private by default." [level=2] [ref=f2e308]
+        - generic [ref=f2e309]:
+          - generic [ref=f2e310]: The Confidentiality Standard
+          - paragraph [ref=f2e311]: Membership is intentionally limited. Every conversation is confidential, every introduction considered, and every profile handled with absolute discretion.
+      - generic [ref=f2e312]:
+        - generic [ref=f2e313]:
+          - button "01 Private Membership Strictly limited member roster" [ref=f2e314]:
+            - generic [ref=f2e315]:
+              - generic [ref=f2e316]: "01"
+              - heading "Private Membership" [level=3] [ref=f2e317]
+            - generic [ref=f2e318]: Strictly limited member roster
+          - paragraph [ref=f2e323]: We do not host open public profiles, search engines, or social catalogues. Your membership status and private life remain completely invisible to the outside world.
+        - button "02 Human-Led Introductions Zero automated algorithmic dispatch" [ref=f2e325]:
+          - generic [ref=f2e326]:
+            - generic [ref=f2e327]: "02"
+            - heading "Human-Led Introductions" [level=3] [ref=f2e328]
+          - generic [ref=f2e329]: Zero automated algorithmic dispatch
+        - button "03 Confidential Profiles Bilateral consent protocols" [ref=f2e334]:
+          - generic [ref=f2e335]:
+            - generic [ref=f2e336]: "03"
+            - heading "Confidential Profiles" [level=3] [ref=f2e337]
+          - generic [ref=f2e338]: Bilateral consent protocols
+        - button "04 Personal Matchmaking Dedicated personal partner" [ref=f2e343]:
+          - generic [ref=f2e344]:
+            - generic [ref=f2e345]: "04"
+            - heading "Personal Matchmaking" [level=3] [ref=f2e346]
+          - generic [ref=f2e347]: Dedicated personal partner
+      - generic [ref=f2e351]:
+        - generic [ref=f2e352]: GDPR & SWISS PRIVACY COMPLIANT PROTOCOL
+        - generic [ref=f2e353]: STRICT BILATERAL DISCLOSURE ONLY
+    - generic [ref=f2e354]:
+      - heading "Begin Your Introduction" [level=2] [ref=f2e356]
+      - generic [ref=f2e359]:
+        - paragraph [ref=f2e360]: TELL US ABOUT THE LIFE YOU HAVE BUILT. WE'LL SHAPE THE INTRODUCTION.
+        - paragraph [ref=f2e362]: Private Matchmaking Dossier · 2026
+      - generic [ref=f2e363]:
+        - button "Apply for Membership" [ref=f2e364]
+        - button "Book Consultation →" [ref=f2e369]:
+          - generic [ref=f2e370]: Book Consultation
+          - generic [ref=f2e371]: →
+      - generic [ref=f2e372]: Confidential Inquiries Only · Limited Acceptance
+  - contentinfo [ref=f2e373]:
+    - generic [ref=f2e374]:
+      - generic [ref=f2e375]:
+        - heading "Élan Match" [level=2] [ref=f2e376]
+        - generic [ref=f2e377]:
+          - generic [ref=f2e378]: PRIVATE MATCHMAKING & RELATIONSHIP CONCIERGE
+          - generic [ref=f2e379]: PARIS · LONDON · NEW YORK · ZURICH
+      - generic [ref=f2e380]:
+        - generic [ref=f2e381]:
+          - generic [ref=f2e382]: Explore
+          - list [ref=f2e383]:
+            - listitem [ref=f2e384]:
+              - link "Curation" [ref=f2e385] [cursor=pointer]:
+                - /url: "#curation"
+            - listitem [ref=f2e386]:
+              - link "Method" [ref=f2e387] [cursor=pointer]:
+                - /url: "#method"
+            - listitem [ref=f2e388]:
+              - link "Stories" [ref=f2e389] [cursor=pointer]:
+                - /url: "#stories"
+            - listitem [ref=f2e390]:
+              - link "Discretion" [ref=f2e391] [cursor=pointer]:
+                - /url: "#discretion"
+            - listitem [ref=f2e392]:
+              - link "Membership" [ref=f2e393] [cursor=pointer]:
+                - /url: "#membership"
+        - generic [ref=f2e394]:
+          - generic [ref=f2e395]: Inquiries
+          - list [ref=f2e396]:
+            - listitem [ref=f2e397]:
+              - button "Private Consultation" [ref=f2e398]
+            - listitem [ref=f2e399]:
+              - link "concierge@elanmatch.com" [ref=f2e400] [cursor=pointer]:
+                - /url: mailto:concierge@elanmatch.com
+            - listitem [ref=f2e401]:
+              - link "press@elanmatch.com" [ref=f2e402] [cursor=pointer]:
+                - /url: mailto:press@elanmatch.com
+        - generic [ref=f2e403]:
+          - generic [ref=f2e404]: Dispatch
+          - list [ref=f2e405]:
+            - listitem [ref=f2e406]:
+              - link "Editorial Journal" [ref=f2e407] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=f2e408]:
+              - link "Instagram" [ref=f2e409] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=f2e410]:
+              - link "LinkedIn" [ref=f2e411] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=f2e412]:
+          - generic [ref=f2e413]: Protocol
+          - list [ref=f2e414]:
+            - listitem [ref=f2e415]:
+              - link "Privacy Protocol" [ref=f2e416] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=f2e417]:
+              - link "Terms of Membership" [ref=f2e418] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=f2e419]:
+              - link "Discretion Charter" [ref=f2e420] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=f2e421]:
+          - generic [ref=f2e422]: The Standard
+          - paragraph [ref=f2e423]: “Meaningful introductions. Made personally.”
+          - paragraph [ref=f2e424]: By appointment only.
+      - generic [ref=f2e425]:
+        - generic [ref=f2e426]: © 2026 ÉLAN MATCH LIMITED. ALL RIGHTS RESERVED.
+        - generic [ref=f2e427]:
+          - generic [ref=f2e428]: NON-INDEXABLE REGISTRY
+          - generic [ref=f2e429]: ENCRYPTED REPOSITORY

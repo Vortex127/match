@@ -89,3 +89,19 @@ body {
   background: #E7E1D7;
   color: #101110;
 }
+
+/* Headline focus-in: blur + rise, triggered once by an IntersectionObserver (see App.tsx) */
+.blur-in {
+  opacity: 0;
+  filter: blur(14px);
+  transform: translate3d(0, 24px, 0);
+  transition: opacity 1.4s var(--ease-editorial), filter 1.4s var(--ease-editorial), transform 1.4s var(--ease-editorial);
+}
+.blur-in.is-in {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blur-in { opacity: 1; filter: none; transform: none; transition: none; }
+}

@@ -1,0 +1,256 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - link "getlayers — home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: getlayers
+      - generic [ref=e13]:
+        - button "Search the library (⌘K)" [ref=e14] [cursor=pointer]
+        - navigation "Primary" [ref=e18]:
+          - link "Library" [ref=e20] [cursor=pointer]:
+            - /url: /
+          - link "Pricing" [ref=e21] [cursor=pointer]:
+            - /url: /pricing
+          - link "Docs" [ref=e22] [cursor=pointer]:
+            - /url: /docs
+          - link "MCP" [ref=e23] [cursor=pointer]:
+            - /url: /mcp
+          - link "Affiliate" [ref=e26] [cursor=pointer]:
+            - /url: /programs/affiliate
+          - link "About" [ref=e27] [cursor=pointer]:
+            - /url: /about
+          - link "Contact" [ref=e28] [cursor=pointer]:
+            - /url: /contact
+      - link "Sign in" [ref=e29] [cursor=pointer]:
+        - /url: /sign-in
+    - main [ref=e33]:
+      - region [ref=e34]:
+        - generic [ref=e35]: 52 templates · new layers weekly
+        - heading "Immersive website prompts" [level=1] [ref=e39]
+        - generic [ref=e41]:
+          - tablist "Library categories" [ref=e42]:
+            - tab "Templates" [selected] [ref=e43]
+            - tab "3D Scenes" [ref=e45] [cursor=pointer]
+            - tab "Sections" [ref=e47] [cursor=pointer]
+            - tab "Backgrounds" [ref=e49] [cursor=pointer]
+            - tab "Gradients" [ref=e51] [cursor=pointer]
+          - button "Popular" [ref=e55] [cursor=pointer]
+        - generic [ref=e60]:
+          - generic [ref=e61]:
+            - generic [ref=e62]:
+              - generic [ref=e63]: Tone
+              - generic [ref=e64]:
+                - button "Dark 33" [ref=e66] [cursor=pointer]:
+                  - text: Dark
+                  - generic [ref=e69]: "33"
+                - button "Light 19" [ref=e71] [cursor=pointer]:
+                  - text: Light
+                  - generic [ref=e75]: "19"
+            - generic [ref=e76]:
+              - generic [ref=e77]: Industry
+              - generic [ref=e78]:
+                - button "AI / Tech 12" [ref=e80] [cursor=pointer]:
+                  - text: AI / Tech
+                  - generic [ref=e83]: "12"
+                - button "Agency / Studio 18" [ref=e85] [cursor=pointer]:
+                  - text: Agency / Studio
+                  - generic [ref=e88]: "18"
+                - button "SaaS 7" [ref=e90] [cursor=pointer]:
+                  - text: SaaS
+                  - generic [ref=e93]: "7"
+                - button "Portfolio 9" [ref=e95] [cursor=pointer]:
+                  - text: Portfolio
+                  - generic [ref=e99]: "9"
+                - button "Fintech 4" [ref=e101] [cursor=pointer]:
+                  - text: Fintech
+                  - generic [ref=e104]: "4"
+                - button "Health / Science 4" [ref=e106] [cursor=pointer]:
+                  - text: Health / Science
+                  - generic [ref=e109]: "4"
+                - button "E-commerce 7" [ref=e111] [cursor=pointer]:
+                  - text: E-commerce
+                  - generic [ref=e115]: "7"
+                - button "Hospitality / Travel 4" [pressed] [ref=e117] [cursor=pointer]:
+                  - text: Hospitality / Travel
+                  - generic [ref=e120]: "4"
+                - button "Sports / Education 4" [ref=e122] [cursor=pointer]:
+                  - text: Sports / Education
+                  - generic [ref=e125]: "4"
+          - generic [ref=e126]:
+            - button "Favourites" [disabled] [ref=e127]
+            - button "Clear All" [ref=e130] [cursor=pointer]
+        - heading "4 templates" [level=2] [ref=e131]
+        - generic [ref=e132]:
+          - article [ref=e134] [cursor=pointer]:
+            - generic [ref=e135]:
+              - img "Brewns" [ref=e136]
+              - generic "Brewns"
+              - button "Like this layer" [ref=e137]: "211"
+            - generic [ref=e140]:
+              - generic [ref=e141]:
+                - heading [level=3] [ref=e144]:
+                  - link "Brewns" [ref=e145]:
+                    - /url: /layer/brewns
+                - button "See pricing — Premium prompt" [ref=e146]:
+                  - generic [ref=e150]: Premium
+              - generic [ref=e151]: Hospitality / Travel
+          - article [ref=e153] [cursor=pointer]:
+            - generic [ref=e154]:
+              - img "Wanderlust" [ref=e155]
+              - generic "Wanderlust"
+              - button "Like this layer" [ref=e156]: "199"
+            - generic [ref=e159]:
+              - generic [ref=e160]:
+                - heading [level=3] [ref=e163]:
+                  - link "Wanderlust" [ref=e164]:
+                    - /url: /layer/wanderlust
+                - button "See pricing — Premium prompt" [ref=e165]:
+                  - generic [ref=e169]: Premium
+              - generic [ref=e170]: Hospitality / Travel
+          - article [ref=e172] [cursor=pointer]:
+            - generic [ref=e173]:
+              - img "Aerra" [ref=e174]
+              - generic "Aerra"
+              - button "Like this layer" [ref=e175]: "125"
+            - generic [ref=e178]:
+              - generic [ref=e179]:
+                - heading [level=3] [ref=e182]:
+                  - link "Aerra" [ref=e183]:
+                    - /url: /layer/aerra
+                - button "See pricing — Premium prompt" [ref=e184]:
+                  - generic [ref=e188]: Premium
+              - generic [ref=e189]: Hospitality / Travel
+          - link "Upgrade" [ref=e191] [cursor=pointer]:
+            - /url: /pricing
+            - generic [ref=e192]:
+              - generic [ref=e201]:
+                - heading "Go Full Stack" [level=3] [ref=e202]
+                - paragraph [ref=e203]: Unlock every prompt, the full source, and all future drops.
+              - generic [ref=e204]: Upgrade
+          - article [ref=e208] [cursor=pointer]:
+            - generic [ref=e209]:
+              - img "Altitude" [ref=e210]
+              - generic "Altitude"
+              - button "Like this layer" [ref=e211]: "123"
+            - generic [ref=e214]:
+              - generic [ref=e215]:
+                - heading [level=3] [ref=e218]:
+                  - link "Altitude" [ref=e219]:
+                    - /url: /layer/altitude
+                - button "See pricing — Premium prompt" [ref=e220]:
+                  - generic [ref=e224]: Premium
+              - generic [ref=e225]: Hospitality / Travel
+      - region [ref=e226]:
+        - generic [ref=e228]:
+          - heading "That’s everything here — for today" [level=2] [ref=e229]
+          - paragraph [ref=e230]: New layers land every week and the library is growing fast — we are heading for thousands. Come back tomorrow and there will be more than there is now.
+      - region [ref=e231]:
+        - generic [ref=e232]:
+          - heading "Keep exploring" [level=2] [ref=e233]
+          - paragraph [ref=e234]: Every layer in the library works with the same one-prompt workflow — pick a different kind.
+        - list [ref=e235]:
+          - listitem [ref=e236]:
+            - link "3D Scenes Real-time WebGL scenes and shader fields." [ref=e237] [cursor=pointer]:
+              - /url: /3d-scenes
+              - generic [ref=e242]:
+                - generic [ref=e243]: 3D Scenes
+                - generic [ref=e244]: Real-time WebGL scenes and shader fields.
+              - generic [aria-hidden] [ref=e245]: →
+          - listitem [ref=e246]:
+            - link "Sections Drop-in page sections with their own motion." [ref=e247] [cursor=pointer]:
+              - /url: /sections
+              - generic [ref=e252]:
+                - generic [ref=e253]: Sections
+                - generic [ref=e254]: Drop-in page sections with their own motion.
+              - generic [aria-hidden] [ref=e255]: →
+          - listitem [ref=e256]:
+            - link "Backgrounds Animated and still backdrops." [ref=e257] [cursor=pointer]:
+              - /url: /backgrounds
+              - generic [ref=e262]:
+                - generic [ref=e263]: Backgrounds
+                - generic [ref=e264]: Animated and still backdrops.
+              - generic [aria-hidden] [ref=e265]: →
+          - listitem [ref=e266]:
+            - link "Gradients Interactive gradients in pure WebGL." [ref=e267] [cursor=pointer]:
+              - /url: /gradients
+              - generic [ref=e272]:
+                - generic [ref=e273]: Gradients
+                - generic [ref=e274]: Interactive gradients in pure WebGL.
+              - generic [aria-hidden] [ref=e275]: →
+    - contentinfo [ref=e276]:
+      - generic [ref=e277]:
+        - generic [ref=e278]:
+          - generic [ref=e279]:
+            - generic [ref=e280]: getlayers
+            - paragraph [ref=e286]: Build cinematic websites in minuteswith GetLayers.
+          - navigation "Product" [ref=e287]:
+            - paragraph [ref=e288]: Product
+            - link "Templates" [ref=e289] [cursor=pointer]:
+              - /url: /templates
+            - link "3D Scenes" [ref=e290] [cursor=pointer]:
+              - /url: /3d-scenes
+            - link "Sections" [ref=e291] [cursor=pointer]:
+              - /url: /sections
+            - link "Backgrounds" [ref=e292] [cursor=pointer]:
+              - /url: /backgrounds
+            - link "Gradients" [ref=e293] [cursor=pointer]:
+              - /url: /gradients
+            - link "Docs" [ref=e294] [cursor=pointer]:
+              - /url: /docs
+            - link "MCP" [ref=e295] [cursor=pointer]:
+              - /url: /mcp
+            - link "Pricing" [ref=e296] [cursor=pointer]:
+              - /url: /pricing
+          - navigation "Company" [ref=e297]:
+            - paragraph [ref=e298]: Company
+            - link "About" [ref=e299] [cursor=pointer]:
+              - /url: /about
+            - link "Affiliate" [ref=e300] [cursor=pointer]:
+              - /url: /programs/affiliate
+            - link "Contact us" [ref=e301] [cursor=pointer]:
+              - /url: /contact
+            - link "Privacy Policy" [ref=e302] [cursor=pointer]:
+              - /url: /privacy-policy
+            - link "Terms of Use" [ref=e303] [cursor=pointer]:
+              - /url: /terms-of-use
+            - link "Cookie Policy" [ref=e304] [cursor=pointer]:
+              - /url: /cookies-policy
+            - link "Affiliate Terms" [ref=e305] [cursor=pointer]:
+              - /url: /affiliate-terms
+            - button "Cookie preferences" [ref=e306] [cursor=pointer]
+          - navigation "Social" [ref=e307]:
+            - paragraph [ref=e308]: Social
+            - link "textura.us" [ref=e309] [cursor=pointer]:
+              - /url: https://instagram.com/textura.us
+            - link "textura.eu" [ref=e315] [cursor=pointer]:
+              - /url: https://instagram.com/textura.eu
+            - link "Facebook" [ref=e321] [cursor=pointer]:
+              - /url: https://www.facebook.com/textura.agency
+            - link "Pinterest" [ref=e327] [cursor=pointer]:
+              - /url: https://www.pinterest.com/texturaagency/
+            - link "Dzianis on X" [ref=e333] [cursor=pointer]:
+              - /url: https://x.com/thedzianis
+            - link "Dzianis on LinkedIn" [ref=e339] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/denkravchu/
+            - link "team@getlayers.ai" [ref=e345] [cursor=pointer]:
+              - /url: mailto:team@getlayers.ai
+            - link "den@getlayers.ai" [ref=e349] [cursor=pointer]:
+              - /url: mailto:den@getlayers.ai
+            - link "textura.agency — opens in a new tab" [ref=e353] [cursor=pointer]:
+              - /url: https://www.textura.agency
+              - text: textura.agency
+              - generic [aria-hidden] [ref=e354]: ©
+        - generic [ref=e359]:
+          - heading "Fresh prompts, every Friday." [level=2] [ref=e360]
+          - paragraph [ref=e361]: Join the getlayers digest — new prompts and AI design news, once a week.
+          - generic [ref=e362]:
+            - textbox "Email address" [ref=e363]:
+              - /placeholder: you@email.com
+            - button "Subscribe" [ref=e364] [cursor=pointer]
+          - paragraph [ref=e365]: By subscribing, you agree to receive our weekly email digest.
+        - paragraph [ref=e367]:
+          - text: © 2026 getlayers ·
+          - link "textura.agency — opens in a new tab" [ref=e368] [cursor=pointer]:
+            - /url: https://www.textura.agency
+            - text: textura.agency
+  - generic: getlayers

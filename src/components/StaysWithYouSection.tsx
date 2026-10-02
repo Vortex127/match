@@ -1,89 +1,84 @@
+import { usePinProgress } from '../hooks/usePinProgress';
+
+const BG = 'https://images.unsplash.com/photo-1476610182048-b716b8518aae?auto=format&fit=crop&w=2400&q=85';
+const KEEPSAKE = 'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&w=900&q=85';
+
+// Pinned for ~2.2 screens: the keepsake grows and settles, the two notes fade in beside it.
 export function StaysWithYouSection() {
+  const { trackRef, stageRef } = usePinProgress<HTMLElement>();
+
   return (
-    <section className="relative min-h-screen w-full bg-[#101110] text-[#F1EDE6] overflow-hidden flex flex-col justify-between py-24 px-6 md:px-12 select-none border-t border-[#E7E1D7]/10">
-      {/* Background Panorama (Landscape with river valley & dusk mist) */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2200&q=85"
-          alt="Panoramic valley at dusk"
-          className="w-full h-full object-cover filter grayscale-[25%] contrast-[1.08] brightness-[0.4] scale-100"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#101110] via-transparent to-[#101110]/80" />
-        <div className="absolute inset-0 film-grain opacity-35 pointer-events-none" />
-      </div>
-
-      {/* Top Headline: "Meet Someone That Stays With You" */}
-      <div className="relative z-10 text-center max-w-3xl mx-auto pt-6">
-        <h2 className="font-editorial-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-[#F1EDE6] tracking-tight uppercase leading-[0.95]">
-          Meet Someone
-          <span className="block italic text-[#E7E1D7]">That Stays With You</span>
-        </h2>
-      </div>
-
-      {/* Center Layout: Left Note + Central Polaroid with Pin + Right Note */}
-      <div className="relative z-10 max-w-[1600px] w-full mx-auto my-12 flex flex-col lg:flex-row items-center justify-between gap-12">
-        
-        {/* Left Editorial Copy Block */}
-        <div className="lg:w-1/3 text-center lg:text-right order-2 lg:order-1">
-          <p className="font-mono text-xs md:text-sm tracking-[0.25em] text-[#E7E1D7]/80 uppercase leading-relaxed max-w-sm mx-auto lg:ml-auto lg:mr-0">
-            WE INTRODUCE FOR THE CONVERSATIONS YOU’LL STILL BE HAVING YEARS LATER.
-          </p>
-          <span className="text-[10px] font-mono tracking-widest text-[#8E8B85] uppercase mt-3 block">
-            01 / DEEP COMPATIBILITY
-          </span>
+    <section ref={trackRef} className="relative h-[220vh] w-full bg-[#101110] text-[#F1EDE6]">
+      <div
+        ref={stageRef}
+        className="sticky top-0 h-screen w-full overflow-hidden select-none"
+        style={{ ['--p' as string]: 1 }}
+      >
+        {/* Backdrop eases in */}
+        <div className="absolute inset-0" style={{ transform: 'scale(calc(1.18 - var(--p) * 0.18))' }}>
+          <img
+            src={BG}
+            alt="Green valley and river under low cloud"
+            loading="lazy"
+            className="h-full w-full object-cover grayscale-[25%] contrast-[1.08] brightness-[0.42]"
+          />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#101110] via-transparent to-[#101110]" />
+        <div className="absolute inset-0 film-grain opacity-35 pointer-events-none" />
 
-        {/* Center Polaroid Keepsake (Replicating exact scrapbook style from video 00:06-00:07) */}
-        <div className="order-1 lg:order-2 relative group">
-          {/* Subtle paper sheet behind */}
-          <div className="absolute -inset-2 bg-[#FAF8F5]/10 rotate-[-3deg] shadow-lg pointer-events-none" />
-          
-          {/* Main Polaroid */}
-          <div className="relative w-64 sm:w-72 md:w-80 bg-[#E7E1D7] p-3.5 pb-6 shadow-[0_25px_60px_rgba(0,0,0,0.8)] border border-black/10 transition-transform duration-500 hover:scale-105 hover:rotate-1">
-            
-            {/* Red Pushpin Accent at top (matches Wanderlust) */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#B83A3A] border-2 border-white shadow-md z-30 flex items-center justify-center">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#E06B6B]" />
-            </div>
+        {/* Title */}
+        <h2
+          className="blur-in absolute left-1/2 top-[11vh] z-10 -translate-x-1/2 text-center font-editorial-serif italic text-4xl sm:text-5xl md:text-6xl leading-[0.98] tracking-[-0.01em] whitespace-nowrap"
+        >
+          Meet Someone
+          <br />
+          Who Stays With You
+        </h2>
 
-            {/* Photo Window */}
-            <div className="relative aspect-[3/4] overflow-hidden bg-black mt-1">
+        {/* Left note */}
+        <p
+          className="absolute left-[7vw] top-[58vh] hidden lg:block max-w-[16rem] text-[11px] leading-[1.9] tracking-[0.2em] uppercase text-[#E7E1D7]/80"
+          style={{
+            opacity: 'clamp(0, calc((var(--p) - 0.3) * 3), 1)',
+            transform: 'translate3d(calc((1 - var(--p)) * -6vw), 0, 0)',
+          }}
+        >
+          We introduce for the conversations you’ll still be having years later.
+        </p>
+
+        {/* Right note */}
+        <p
+          className="absolute right-[7vw] top-[58vh] hidden lg:block max-w-[16rem] text-right text-[11px] leading-[1.9] tracking-[0.2em] uppercase text-[#E7E1D7]/80"
+          style={{
+            opacity: 'clamp(0, calc((var(--p) - 0.3) * 3), 1)',
+            transform: 'translate3d(calc((1 - var(--p)) * 6vw), 0, 0)',
+          }}
+        >
+          The quiet evenings. The unscripted laughter. Introductions that never feel like work.
+        </p>
+
+        {/* Taped keepsake photograph */}
+        <div
+          className="absolute left-1/2 top-[56%] w-56 md:w-72"
+          style={{
+            transform:
+              'translate(-50%, -50%) rotate(calc((1 - var(--p)) * -7deg)) scale(calc(0.62 + var(--p) * 0.42))',
+          }}
+        >
+          <div className="relative bg-[#E7E1D7] p-3 pb-9 shadow-[0_30px_70px_rgba(0,0,0,0.75)]">
+            {/* translucent tape */}
+            <span className="absolute -top-3 left-1/2 h-6 w-20 -translate-x-1/2 rotate-[-4deg] bg-[#C5D2A8]/60 backdrop-blur-[1px]" />
+            <div className="aspect-[3/4] overflow-hidden bg-black">
               <img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85"
-                alt="Two people together in quiet connection"
-                className="w-full h-full object-cover filter contrast-[1.05] brightness-95"
+                src={KEEPSAKE}
+                alt="Two people sharing a quiet moment at dusk"
+                loading="lazy"
+                className="h-full w-full object-cover saturate-[0.85] contrast-[1.05]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-30" />
             </div>
-
-            {/* Bottom Polaroid Text */}
-            <div className="mt-4 text-center">
-              <span className="font-editorial-serif text-lg sm:text-xl text-[#171817] font-normal tracking-tight uppercase block">
-                THE ONES THAT STAY
-              </span>
-              <span className="text-[9px] font-mono text-[#171817]/60 tracking-wider uppercase block mt-1">
-                A feeling that doesn’t fade with time
-              </span>
-            </div>
+            <p className="mt-3 text-center font-editorial-serif italic text-base text-[#171817]">The ones that stay</p>
           </div>
         </div>
-
-        {/* Right Editorial Copy Block */}
-        <div className="lg:w-1/3 text-center lg:text-left order-3">
-          <p className="font-mono text-xs md:text-sm tracking-[0.25em] text-[#E7E1D7]/80 uppercase leading-relaxed max-w-sm mx-auto lg:mr-auto lg:ml-0">
-            THE QUIET EVENINGS. THE UNSCRIPTED LAUGHTER. THE INTRODUCTIONS THAT NEVER FEEL LIKE WORK.
-          </p>
-          <span className="text-[10px] font-mono tracking-widest text-[#8E8B85] uppercase mt-3 block">
-            02 / UNHURRIED ATTRACTION
-          </span>
-        </div>
-
-      </div>
-
-      {/* Bottom Subtle Bar */}
-      <div className="relative z-10 max-w-[1600px] w-full mx-auto pt-6 border-t border-[#E7E1D7]/15 flex justify-between items-center text-[10px] font-mono tracking-[0.25em] text-[#8E8B85] uppercase">
-        <span>ARCHIVAL DOSSIER · REF. 2026</span>
-        <span>A PRIVATE CONVERSATION</span>
       </div>
     </section>
   );

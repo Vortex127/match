@@ -67,7 +67,7 @@ export function ApplicationDrawer({
           <div>
             {/* Header */}
             <div className="mb-10">
-              <span className="text-[10px] tracking-[0.3em] uppercase text-[#8E8B85] block mb-2 font-mono">
+              <span className="text-[10px] tracking-[0.3em] uppercase text-[#8E8B85] block mb-2 font-sans">
                 Confidential Dossier · 2026
               </span>
               <h2 className="font-editorial-serif text-3xl md:text-4xl text-[#F1EDE6] tracking-tight">
@@ -122,7 +122,7 @@ export function ApplicationDrawer({
                   Thank you, {formData.fullName || 'for your introduction'}. Your dossier has been transferred directly to our managing matchmakers. 
                 </p>
                 <div className="bg-[#101110] border border-[#E7E1D7]/10 p-5 rounded-none space-y-2 text-xs text-[#8E8B85]">
-                  <p className="text-[#F1EDE6] font-mono text-[10px] tracking-wider uppercase">Next Steps:</p>
+                  <p className="text-[#F1EDE6] font-sans text-[10px] tracking-wider uppercase">Next Steps:</p>
                   <p>1. Internal compatibility audit & geographical alignment review.</p>
                   <p>2. Personal outreach via encrypted channel within 48 business hours.</p>
                   <p>3. Arrangement of confidential introductory conversation.</p>
@@ -139,7 +139,7 @@ export function ApplicationDrawer({
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-mono">
+                    <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-sans">
                       Full Name *
                     </label>
                     <input
@@ -152,7 +152,7 @@ export function ApplicationDrawer({
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-mono">
+                    <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-sans">
                       Confidential Email *
                     </label>
                     <input
@@ -168,7 +168,7 @@ export function ApplicationDrawer({
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-mono">
+                    <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-sans">
                       Primary Residence / City *
                     </label>
                     <input
@@ -181,7 +181,7 @@ export function ApplicationDrawer({
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-mono">
+                    <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-sans">
                       Age Range
                     </label>
                     <input
@@ -195,7 +195,7 @@ export function ApplicationDrawer({
                 </div>
 
                 <div>
-                  <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-mono">
+                  <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-sans">
                     Professional Endeavor / Field
                   </label>
                   <input
@@ -208,7 +208,7 @@ export function ApplicationDrawer({
                 </div>
 
                 <div>
-                  <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-mono">
+                  <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-sans">
                     Preferred Consultation Setting
                   </label>
                   <div className="grid grid-cols-2 gap-3 text-xs">
@@ -238,7 +238,7 @@ export function ApplicationDrawer({
                 </div>
 
                 <div>
-                  <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-mono">
+                  <label className="block text-[10px] tracking-[0.2em] uppercase text-[#8E8B85] mb-2 font-sans">
                     Personal Statement / Intentions (Optional)
                   </label>
                   <textarea
