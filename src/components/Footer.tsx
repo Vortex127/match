@@ -17,7 +17,7 @@ export function Footer({ onOpenConsultation }: FooterProps) {
           </h2>
           <div className="flex justify-between items-center text-[10px] md:text-xs tracking-[0.3em] font-sans text-[#8E8B85] uppercase mt-4">
             <span>{footer.descriptor}</span>
-            <span>PARIS · LONDON · NEW YORK · ZURICH</span>
+            <span>PARIS · LONDON · LAHORE · NEW YORK · ZURICH</span>
           </div>
         </div>
 

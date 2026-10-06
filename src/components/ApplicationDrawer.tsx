@@ -176,7 +176,7 @@ export function ApplicationDrawer({
                       required
                       value={formData.location}
                       onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                      placeholder="e.g. London / Paris / New York"
+                      placeholder="e.g. Lahore / London / New York"
                       className="w-full bg-[#101110] border border-[#E7E1D7]/20 px-3 py-2.5 text-xs text-[#F1EDE6] placeholder-[#8E8B85]/40 focus:outline-none focus:border-[#E7E1D7] transition-colors"
                     />
                   </div>

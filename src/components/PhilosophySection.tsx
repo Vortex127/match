@@ -60,7 +60,7 @@ export function PhilosophySection() {
             </div>
             <div className="flex justify-between text-[10px] tracking-[0.2em] uppercase font-mono text-[#8E8B85] mt-3">
               <span>Human Compatibility</span>
-              <span>Geneva · Paris</span>
+              <span>Lahore · Geneva · Paris</span>
             </div>
           </div>
 

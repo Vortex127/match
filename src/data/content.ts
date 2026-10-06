@@ -30,7 +30,7 @@ export const SITE_DATA = {
     name: "ÉLAN MATCH",
     descriptor: "PRIVATE MATCHMAKING & RELATIONSHIP CONCIERGE",
     established: "EST. 2026",
-    cities: "PARIS · NEW YORK · LONDON · COPENHAGEN",
+    cities: "PARIS · NEW YORK · LAHORE · LONDON · COPENHAGEN",
     tagline: "BEYOND PROFILES. INTO CONNECTION.",
     mission: "Real compatibility cannot be reduced to a swipe. Élan combines thoughtful matchmaking, human intuition, and a deeply personal understanding of each member to introduce people who genuinely belong in one another's lives."
   },
@@ -298,7 +298,7 @@ export const SITE_DATA = {
     contactInfo: {
       inquiries: "concierge@elanmatch.com",
       press: "press@elanmatch.com",
-      locations: "Paris · London · New York · Zurich"
+      locations: "Paris · London · Lahore · Karachi · New York · Zurich"
     },
     socialLinks: [
       { label: "Editorial Journal", href: "#" },

@@ -206,7 +206,9 @@ export function HeroWanderlust({ onOpenApply }: HeroWanderlustProps) {
         >
           <li className="text-[#F1EDE6]">• All introductions</li>
           <li>London</li>
+          <li>Lahore</li>
           <li>New York</li>
+          <li>Karachi</li>
           <li>Copenhagen</li>
           <li>Lisbon</li>
         </ul>

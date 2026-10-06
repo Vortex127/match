@@ -49,7 +49,7 @@ export function MemoryCollage() {
             MEMORIES BEFORE THEY ARE WRITTEN.
           </h2>
           <p className="text-xs text-[#8E8B85] tracking-widest uppercase font-mono mt-4">
-            The quiet texture of shared lives in Copenhagen, London, Paris & New York
+            The quiet texture of shared lives in Lahore, Copenhagen, London, Paris & New York
           </p>
         </div>
 

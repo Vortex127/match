@@ -84,7 +84,7 @@ export function Preloader({ onComplete }: PreloaderProps) {
               phase === 'reveal' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
             }`}
           >
-            New York · Paris · London
+            New York · Paris · Lahore · London
           </span>
         </div>
       </div>

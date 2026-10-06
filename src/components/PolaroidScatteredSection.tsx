@@ -22,9 +22,9 @@ const POLAROIDS: PolaroidItem[] = [
   { name: 'Copenhagen', img: u('1494774157365-9e04c6720e47'), x: 10, xm: 16, y: 22, rot: -14 },
   { name: 'Tribeca', img: u('1474552226712-ac0f0961a954'), x: 20, xm: 34, y: 27, rot: 8 },
   // top-right cluster, last one bleeds off the edge
-  { name: 'Kyoto', img: u('1470337458703-46ad1756a187'), x: 77, y: 25, rot: -8, desktopOnly: true },
+  { name: 'Lahore', img: u('1587474260584-136574528ed5'), x: 77, y: 25, rot: -8, desktopOnly: true },
   { name: 'Lisbon', img: u('1511895426328-dc8714191300'), x: 86, y: 21, rot: 11, desktopOnly: true },
-  { name: 'Milan', img: u('1559339352-11d035aa65de'), x: 96, y: 29, rot: -7 },
+  { name: 'Islamabad', img: u('1560986752-2e31d9507413'), x: 96, y: 29, rot: -7 },
   // central band
   { name: 'Stockholm', img: u('1414235077428-338989a2e8c0'), x: 24, xm: 30, y: 56, rot: -10 },
   { name: 'Edinburgh', img: u('1551632811-561732d1e306'), x: 31, xm: 42, y: 65, rot: 6 },
