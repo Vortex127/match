@@ -79,12 +79,11 @@ export function StoriesSection() {
           
           {/* Large Magazine Still */}
           <div className="lg:col-span-6 relative">
-            <div className="relative aspect-[4/5] overflow-hidden bg-[#161716] group">
+            <div key={current.id} className="story-visual relative aspect-[4/5] overflow-hidden bg-[#161716] group">
               <img
-                key={current.id}
                 src={current.image}
                 alt={current.names}
-                className="w-full h-full object-cover grayscale-[15%] contrast-[1.05] brightness-90 animate-fade-in transition-transform duration-1000 group-hover:scale-105"
+                className="w-full h-full object-cover grayscale-[15%] contrast-[1.05] brightness-90 transition-transform duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#101110]/80 via-transparent to-transparent opacity-40" />
 
@@ -101,7 +100,7 @@ export function StoriesSection() {
           </div>
 
           {/* Editorial Content Column */}
-          <div className="lg:col-span-6 space-y-10 lg:pl-6">
+          <div key={`${current.id}-content`} className="story-copy lg:col-span-6 space-y-10 lg:pl-6">
             <div className="space-y-4">
               <div className="flex items-center space-x-3 text-[10px] font-sans tracking-[0.3em] uppercase text-[#8E8B85]">
                 <span>ARCHIVAL DOSSIER</span>

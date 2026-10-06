@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface PreloaderProps {
   onComplete: () => void;
@@ -6,6 +6,12 @@ interface PreloaderProps {
 
 export function Preloader({ onComplete }: PreloaderProps) {
   const [phase, setPhase] = useState<'enter' | 'reveal' | 'exit' | 'done'>('enter');
+
+  // Keep the latest callback in a ref so a parent re-render (new inline fn) doesn't restart the timers
+  const onCompleteRef = useRef(onComplete);
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
 
   useEffect(() => {
     // Step 1: Wordmark emerges quietly
@@ -21,7 +27,7 @@ export function Preloader({ onComplete }: PreloaderProps) {
     // Step 3: Complete & unmount
     const t3 = setTimeout(() => {
       setPhase('done');
-      onComplete();
+      onCompleteRef.current();
     }, 2500);
 
     return () => {
@@ -29,7 +35,7 @@ export function Preloader({ onComplete }: PreloaderProps) {
       clearTimeout(t2);
       clearTimeout(t3);
     };
-  }, [onComplete]);
+  }, []);
 
   if (phase === 'done') return null;
 

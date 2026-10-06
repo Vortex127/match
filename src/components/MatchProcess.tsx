@@ -8,7 +8,7 @@ export function MatchProcess() {
 
   return (
     <section
-      id="method"
+      id="method" 
       className="relative min-h-screen w-full bg-[#101110] text-[#F1EDE6] py-28 md:py-36 px-6 md:px-12 border-t border-[#E7E1D7]/10"
     >
       <div className="max-w-[1800px] w-full mx-auto">

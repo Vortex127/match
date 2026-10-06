@@ -1,9 +1,47 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SITE_DATA } from '../data/content';
 import { Plus, Minus } from 'lucide-react';
 
+const readMs = (name: string, fallback: number) => {
+  const n = parseFloat(getComputedStyle(document.documentElement).getPropertyValue(name));
+  return Number.isFinite(n) ? n : fallback;
+};
+
+// Transitions.dev "Text states swap": exit old -> swap -> enter new.
+// `italic` is the target state; `shown` lags behind it by one swap.
+function SwapTitle({ title, italic }: { title: string; italic: boolean }) {
+  const [shown, setShown] = useState(italic);
+  const ref = useRef<HTMLSpanElement>(null);
+  const busy = useRef(false);
+  const timer = useRef<number>();
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || busy.current || italic === shown) return;
+    busy.current = true;
+    el.classList.add('is-exit');
+    timer.current = window.setTimeout(() => {
+      setShown(italic);
+      el.classList.remove('is-exit');
+      el.classList.add('is-enter-start');
+      void el.offsetWidth; // force reflow so the enter animates
+      el.classList.remove('is-enter-start');
+      busy.current = false;
+    }, readMs('--text-swap-dur', 150));
+  }, [italic, shown]);
+
+  useEffect(() => () => window.clearTimeout(timer.current), []);
+
+  return (
+    <span ref={ref} className={`t-text-swap ${shown ? 'italic' : ''}`}>
+      {title}
+    </span>
+  );
+}
+
 export function PrivacySection() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const { trust } = SITE_DATA;
 
   const toggleRow = (idx: number) => {
@@ -52,19 +90,25 @@ export function PrivacySection() {
             return (
               <div
                 key={marker.number}
-                className="border-b border-[#171817]/15 transition-colors duration-300"
+                className="border-b border-[#171817]/15 transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
               >
                 <button
                   type="button"
                   onClick={() => toggleRow(idx)}
+                  onMouseEnter={() => setActiveIndex(idx)}
+                  onMouseLeave={() => setActiveIndex(null)}
+                  onFocus={(e) => e.currentTarget.matches(':focus-visible') && setActiveIndex(idx)}
+                  onBlur={() => setActiveIndex(null)}
+                  aria-expanded={isOpen}
+                  aria-controls={`privacy-marker-details-${idx}`}
                   className="w-full py-8 md:py-10 flex flex-col md:flex-row md:items-center justify-between text-left group"
                 >
                   <div className="flex items-baseline space-x-6 md:space-x-12">
                     <span className="font-sans text-xs md:text-sm tracking-widest text-[#171817]/40">
                       {marker.number}
                     </span>
-                    <h3 className="font-editorial-serif text-3xl sm:text-4xl md:text-5xl text-[#171817] tracking-tight group-hover:italic transition-all">
-                      {marker.title}
+                    <h3 className="font-editorial-serif text-3xl sm:text-4xl md:text-5xl text-[#171817] tracking-tight">
+                      <SwapTitle title={marker.title} italic={activeIndex === idx} />
                     </h3>
                   </div>
 
@@ -72,20 +116,29 @@ export function PrivacySection() {
                     <span className="text-xs font-sans tracking-widest uppercase text-[#171817]/50">
                       {marker.note}
                     </span>
-                    <div className="w-8 h-8 rounded-full border border-[#171817]/20 flex items-center justify-center text-[#171817]/60 group-hover:border-[#171817] group-hover:text-[#171817] transition-colors">
-                      {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
+                    <div className="relative w-8 h-8 rounded-full border border-[#171817]/20 flex items-center justify-center text-[#171817]/60 group-hover:border-[#171817] group-hover:text-[#171817] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none">
+                      <Plus className={`absolute w-3.5 h-3.5 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${isOpen ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'}`} />
+                      <Minus className={`absolute w-3.5 h-3.5 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${isOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'}`} />
                     </div>
                   </div>
                 </button>
 
                 {/* Expanded Details */}
-                {isOpen && (
-                  <div className="pb-10 pl-12 md:pl-24 max-w-3xl animate-fade-in">
-                    <p className="text-base sm:text-lg text-[#171817]/75 font-light leading-relaxed font-cormorant">
-                      {marker.description}
-                    </p>
+                <div
+                  id={`privacy-marker-details-${idx}`}
+                  aria-hidden={!isOpen}
+                  className={`grid transition-[grid-template-rows,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+                    isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="pb-10 pl-12 md:pl-24 max-w-3xl">
+                      <p className="text-base sm:text-lg text-[#171817]/75 font-light leading-relaxed font-cormorant">
+                        {marker.description}
+                      </p>
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

@@ -193,8 +193,8 @@ export const SITE_DATA = {
   stories: [
     {
       id: "story-1",
-      names: "Maya & Daniel",
-      location: "London → Copenhagen",
+      names: "Ahsan & Sana",
+      location: "Karachi",
       year: "Introduced 2025",
       quote: "Neither of us expected the first introduction to feel this natural.",
       detail: "Maya, a design director in Bloomsbury, and Daniel, an architectural conservationist based in Copenhagen, were introduced after our matchmakers identified a shared aesthetic restraint and mutual desire to build an unhurried life together.",
@@ -203,8 +203,8 @@ export const SITE_DATA = {
     },
     {
       id: "story-2",
-      names: "Amelia & Marcus",
-      location: "New York",
+      names: "Zain & Ayesha",
+      location: "Lahore",
       year: "Introduced 2026",
       quote: "We had both stopped looking. That turned out to be the point.",
       detail: "Marcus runs a biotech research fund in Tribeca; Amelia is a classical concert pianist and writer. After years of swipe exhaustion, Élan introduced them over an intimate private dinner at an understated West Village bistro.",
@@ -213,8 +213,8 @@ export const SITE_DATA = {
     },
     {
       id: "story-3",
-      names: "Isabel & Theo",
-      location: "Lisbon",
+      names: "Hassan & Laiba",
+      location: "Islamabad",
       year: "Introduced 2025",
       quote: "From the first evening, conversation never felt like work.",
       detail: "Introduced at a private gallery opening overlooking the Tagus river. Both shared an international childhood, deep affinity for literature, and an unhurried weekend pace that neither had found in conventional dating circles.",
@@ -223,8 +223,8 @@ export const SITE_DATA = {
     },
     {
       id: "story-4",
-      names: "Julian & Elena",
-      location: "Paris & Kyoto",
+      names: "Omar & Hira",
+      location: "Karachi & Lahore",
       year: "Introduced 2024",
       quote: "Discretion was paramount for our careers. The care Élan took was exceptional.",
       detail: "A dual-residence partnership spanning contemporary art publishing and private equity. Connected through our bespoke confidential scout network without public listing or compromise.",
